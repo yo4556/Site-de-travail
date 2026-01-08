@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat jQuery Moderne</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="chat-container">
+    <div class="chat-header">Discussion en direct</div>
+    <div id="affiche"></div>
+
+    <form id="form-chat">
+        <input type="text" id="pseudo" placeholder="Pseudo" required size="8">
+        <input type="text" id="message" placeholder="Tapez un message..." autocomplete="off" required>
+        <button type="button" id="envoyer">Envoyer</button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function(){
+    function scrollToBottom() {
+        var chat = $('#affiche');
+        chat.scrollTop(chat[0].scrollHeight);
+    }
+
+    setInterval(function() {
+        var actuel = $('#pseudo').val();
+        $.get('affiche.php?mon_pseudo=' + actuel, function(data) {
+            if($('#affiche').html() !== data) {
+                $('#affiche').html(data);
+                scrollToBottom();
+            }
+        });
+    }, 1000);
+
+    $('#envoyer').click(function(e) {
+        e.preventDefault();
+        const pseudo = $('#pseudo').val();
+        const msg = $('#message').val();
+
+        if(pseudo && msg) {
+            $.get('dire.php', { pseudo: pseudo, message: msg }, function() {
+                $('#message').val(''); 
+                scrollToBottom();
+            });
+        }
+    });
+
+    $('#message').keypress(function(e) {
+        if(e.which == 13) {
+            $('#envoyer').click();
+            return false;
+        }
+    });
+});
+</script>
+
+</body>
+</html>

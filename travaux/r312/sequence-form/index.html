@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Inscription newsletter</title>
+  </head>
+
+  <body>
+    <form action="validation.php" method="post">
+      <fieldset>
+        <legend>Inscription à la newsletter</legend>
+		<input type="text" id="prenom" name="prenom" required pattern="[a-zA-ZÀ-ÿ]{3,15}" title="3 à 15 lettres uniquement">
+		<input type="email" id="email" name="email" required placeholder="exemple@domaine.com">
+        <input type="submit" value="S'inscrire">
+      </fieldset>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $("form").submit(function (event) {
+        event.preventDefault();
+        envoiFormulaire();
+      });
+
+      function envoiFormulaire() {
+        var data = {};
+        $(".erreur, .success").remove();
+        $("input").removeClass("error");
+        data.prenom = $("#prenom").val();
+        data.email = $("#email").val();
+
+        $.ajax({
+          dataType: "json",
+          type: "POST",
+          url: "validation.php",
+          data: data,
+          success: function (reponse) {
+            if (reponse === true) {
+              $("form").after('<p class="success">Inscription réussie</p>');
+            } else {
+              $.each(reponse, function (champ, erreur) {
+                $("#" + champ)
+                  .addClass("error")
+                  .after('<p class="erreur">' + erreur + "</p>");
+              });
+            }
+          },
+          error: function () {
+            console.log("Problème de validation");
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

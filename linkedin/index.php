@@ -1,0 +1,1 @@
+<?php header("location:https://www.linkedin.com/in/yoan-deloustal-a10045337/");?>
