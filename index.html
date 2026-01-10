@@ -2,30 +2,32 @@
 <html lang=fr>
 
 <head>
-    <meta charset=UTF-8 />
-    <meta name=viewport content="width=device-width, initial-scale=1.0" />
-    <link href=css/style.css rel=stylesheet />
-    <link rel=icon href=css/icon.svg type=image/x-icon />
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <link href=css/style.css rel=stylesheet>
+    <link rel=icon href=css/icon.svg type=image/x-icon>
     <title>Site de Yoan</title>
 </head>
 <body>
     <header id=header>
         <nav class=nav-container>
-            <a href=# class=logo><img src="css/icon.svg"></a>
+            <a href=# class=logo><img src="css/icon.svg" alt="logo"></a>
             <div class=hamburger id=hamburger> <span></span><span></span><span></span> </div>
             <ul class=nav-menu id=nav-menu>
                 <li><a class=nav-link href=#but1>But1</a></li>
                 <li><a class=nav-link href=#but2>But2</a></li>
                 <li><a class=nav-link href="https://yoan-deloustal.fr/" target=_blank>Portfolio</a></li>
-                <li><a class=nav-link href=content/Deloustal_Yoan_CV.pdf download>Mon CV</a> </li>
-                <li><a class=nav-link href=linkedin/index.php>Linkedin</a></li>
+                <li><a class=nav-link href=content/Deloustal_Yoan_CV.pdf download>Mon CV</a></li>
+                <li><a class="link" href="https://github.com/yo4556"><img src="content/git.svg" alt="Git Logo"></a></li>
+                <li><a class="link" href="linkedin/index.php"><img src="content/link.svg" alt="Linkedin Logo"></a></li>
             </ul>
+
         </nav>
     </header>
     <main>
         <h1>BUT1</h1>
-        <section class="BUT">
-            <section class="sem">
+        <div class="BUT">
+            <div class="sem">
                 <a class="seance" href="travaux/r112/sequence1/index.html">
                     <img src="content/s1-1.svg" alt="Séquence 1">
                     <span class="numero">Séquence 1</span>
@@ -55,8 +57,8 @@
                     <img src="content/s1-6.svg" alt="Séquence 6">
                     <span class="numero">Séquence 6</span>
                 </a>
-            </section>
-            <section class="sem">
+            </div>
+            <div class="sem">
                 <a class="seance" href="travaux/r212/sequence1/monopoly.html">
                     <img src="content/s2-1.svg" alt="Séquence 1">
                     <span class="numero">Séquence 1</span>
@@ -81,11 +83,11 @@
                     <img src="content/s2-5.svg" alt="Séquence 5">
                     <span class="numero">Séquence 5</span>
                 </a>
-            </section>
-        </section>
+            </div>
+        </div>
         <h1>BUT2</h1>
-        <section class="BUT">
-            <section class="sem">
+        <div class="BUT">
+            <div class="sem">
                 <a class="seance" href="travaux/r312/sequence1/index.html">
                     <img src="content/s3-1.svg" alt="Séquence 1">
                     <span class="numero">Séquence 1</span>
@@ -104,8 +106,8 @@
                     <img src="content/none.svg" alt="Séquence 3">
                     <span class="numero">Séquence 3 | En construction</span>
                 </a>
-            </section>
-        </section>
+            </div>
+        </div>
 
     </main>
     <footer>
@@ -114,12 +116,4 @@
     <script src="js/script.js"></script>
 
 </body>
-
 </html>
-<svg>
-    <filter id=glass>
-        <feTurbulence type=fractalNoise baseFrequency="0.01 0.01" numOctaves=1 seed=5 ; result=turbulence />
-        <feGaussianBlur in=turbulence stdDeviation=3 result=softMap />
-        <feDisplacementMap in=SourceGraphic in2=softMap scale=150 />
-    </filter>
-</svg>
