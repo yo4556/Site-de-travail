@@ -1,1 +1,15 @@
-document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".hamburger"),t=document.querySelector(".nav-menu");e.addEventListener("click",()=>{e.classList.toggle("active"),t.classList.toggle("active")})}),document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("header");window.addEventListener("scroll",()=>{50<window.scrollY?e.classList.add("sticky"):e.classList.remove("sticky")})});
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+const navContainer = document.querySelector(".nav-container");
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    navContainer.classList.toggle("menu-open");
+});
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+        navContainer.classList.remove("menu-open");
+    });
+});
